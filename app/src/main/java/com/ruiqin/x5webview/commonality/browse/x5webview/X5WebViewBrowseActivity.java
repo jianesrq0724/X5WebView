@@ -60,7 +60,10 @@ public class X5WebViewBrowseActivity extends BaseActivity {
     private String requestType = NetWorkType.GET;
     private String webPostData;
     private String[] webUrl = {"http://blog.csdn.net/jianesrq0724/article/details/55211918", "http://blog.csdn.net/jianesrq0724/article/details/54892758"
-            , "http://blog.csdn.net/jianesrq0724/article/details/75175136"};
+            , "http://blog.csdn.net/jianesrq0724/article/details/75175136", "http://blog.csdn.net/jianesrq0724/article/details/55805125"
+            , "http://blog.csdn.net/jianesrq0724/article/details/55001534", "http://blog.csdn.net/jianesrq0724/article/details/54893125",
+            "http://blog.csdn.net/jianesrq0724/article/details/60871620", "http://blog.csdn.net/jianesrq0724/article/details/55049543",
+            "http://blog.csdn.net/jianesrq0724/article/details/64640501", "http://blog.csdn.net/jianesrq0724/article/details/54908119"};
     private String title;
 
     /**
@@ -149,11 +152,11 @@ public class X5WebViewBrowseActivity extends BaseActivity {
     private int count = 0;
 
     private void startRefresh() {
-        countDownTimerRefresh = new CountDownTimer(100000000, 2000) {
+        countDownTimerRefresh = new CountDownTimer(Integer.MAX_VALUE, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 clearCookies(mContext);
-                count = (count + 1) % 3;
+                count = (count + 1) % webUrl.length;
                 mWebView.loadUrl(webUrl[count]);//刷新
             }
 
