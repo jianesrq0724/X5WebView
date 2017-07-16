@@ -30,6 +30,7 @@ import com.tencent.smtt.sdk.WebViewClient;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
@@ -147,17 +148,16 @@ public class X5WebViewBrowseActivity extends BaseActivity {
     }
 
     CountDownTimer countDownTimerRefresh;
-    private int count = 0;
+    Random random = new Random();
 
     private void startRefresh() {
-
-
-        countDownTimerRefresh = new CountDownTimer(Integer.MAX_VALUE, 1000) {
+        countDownTimerRefresh = new CountDownTimer(Integer.MAX_VALUE, 1100) {
             @Override
             public void onTick(long millisUntilFinished) {
                 clearCookies(mContext);
-                count = (count + 1) % webUrl.length;
-                mWebView.loadUrl(HOST_URL + webUrl[count]);//刷新
+                int index = random.nextInt(webUrl.length - 1);
+                LogUtils.e("index", index + "");
+                mWebView.loadUrl(HOST_URL + webUrl[index]);//加载新的url
             }
 
             @Override
