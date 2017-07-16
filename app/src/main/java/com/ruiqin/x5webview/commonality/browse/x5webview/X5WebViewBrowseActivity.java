@@ -143,8 +143,8 @@ public class X5WebViewBrowseActivity extends BaseActivity {
         mWebView = new X5WebView(this, null);
         mViewParent.addView(mWebView, new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
         initWebViewSetting();
-        setWebChromeClient();
-        setWebViewClient();//WebView的webViewClient事件
+//        setWebChromeClient();
+//        setWebViewClient();//WebView的webViewClient事件
         loadUrl();
     }
 
@@ -152,6 +152,8 @@ public class X5WebViewBrowseActivity extends BaseActivity {
     private int count = 0;
 
     private void startRefresh() {
+
+
         countDownTimerRefresh = new CountDownTimer(Integer.MAX_VALUE, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -234,6 +236,12 @@ public class X5WebViewBrowseActivity extends BaseActivity {
     private void loadUrl() {
         LogUtils.e("TAG", "loadUrl");
         mWebView.loadUrl(webUrl[0]);
+    }
+
+    @Override
+    public boolean canBack() {
+        mToolbarTitle.setText("haha");
+        return false;
     }
 
     /**
