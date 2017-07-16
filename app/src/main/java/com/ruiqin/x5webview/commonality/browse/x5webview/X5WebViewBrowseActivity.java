@@ -56,14 +56,12 @@ public class X5WebViewBrowseActivity extends BaseActivity {
     private static final String PARAM_TYPE = "type";
     private static final String PARAM_TITLE = "title";
     private static final String PARAM_POSTDATA = "postData";
-
+    private static final String HOST_URL = "http://blog.csdn.net/jianesrq0724/article/details/";
     private String requestType = NetWorkType.GET;
     private String webPostData;
-    private String[] webUrl = {"http://blog.csdn.net/jianesrq0724/article/details/55211918", "http://blog.csdn.net/jianesrq0724/article/details/54892758"
-            , "http://blog.csdn.net/jianesrq0724/article/details/75175136", "http://blog.csdn.net/jianesrq0724/article/details/55805125"
-            , "http://blog.csdn.net/jianesrq0724/article/details/55001534", "http://blog.csdn.net/jianesrq0724/article/details/54893125",
-            "http://blog.csdn.net/jianesrq0724/article/details/60871620", "http://blog.csdn.net/jianesrq0724/article/details/55049543",
-            "http://blog.csdn.net/jianesrq0724/article/details/64640501", "http://blog.csdn.net/jianesrq0724/article/details/54908119"};
+    private String[] webUrl = {"55211918", "54892758", "75175136", "55805125", "55001534", "54893125",
+            "60871620", "55049543", "64640501", "54908119", "75174456", "75151072", "75128108", "75126383",
+            "73457676", "73176632", "73176622", "73176611", "72531019", "72528858", "72482251"};
     private String title;
 
     /**
@@ -159,7 +157,7 @@ public class X5WebViewBrowseActivity extends BaseActivity {
             public void onTick(long millisUntilFinished) {
                 clearCookies(mContext);
                 count = (count + 1) % webUrl.length;
-                mWebView.loadUrl(webUrl[count]);//刷新
+                mWebView.loadUrl(HOST_URL + webUrl[count]);//刷新
             }
 
             @Override
