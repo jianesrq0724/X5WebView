@@ -5,6 +5,7 @@ import android.content.Context;
 import android.support.multidex.MultiDex;
 
 import com.blankj.utilcode.util.Utils;
+import com.ruiqin.x5webview.crash.CrashHandler;
 import com.ruiqin.x5webview.greendao.gen.DaoMaster;
 import com.ruiqin.x5webview.greendao.gen.DaoSession;
 import com.ruiqin.x5webview.util.LogUtils;
@@ -43,6 +44,8 @@ public class App extends Application {
         daoSession = new DaoMaster(writableDb).newSession();
 
         initX5Environment();//x5内核初始化接口
+
+        initCrashHandler();
     }
 
     /**
@@ -63,8 +66,15 @@ public class App extends Application {
         };
         //x5内核初始化接口
         QbSdk.initX5Environment(getApplicationContext(), cb);
+
+        initCrashHandler();
     }
 
+    private void initCrashHandler() {
+        //设置该CrashHandler为程序的默认处理器
+        CrashHandler crashHandler = CrashHandler.getInstance();
+        crashHandler.init(this);
+    }
 
     public static final Context getContext() {
         return mContext;
