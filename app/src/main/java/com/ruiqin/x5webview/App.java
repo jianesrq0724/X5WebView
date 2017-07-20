@@ -3,12 +3,12 @@ package com.ruiqin.x5webview;
 import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
+import android.util.Log;
 
 import com.blankj.utilcode.util.Utils;
 import com.ruiqin.x5webview.crash.CrashHandler;
 import com.ruiqin.x5webview.greendao.gen.DaoMaster;
 import com.ruiqin.x5webview.greendao.gen.DaoSession;
-import com.ruiqin.x5webview.util.LogUtils;
 import com.tencent.smtt.sdk.QbSdk;
 
 import org.greenrobot.greendao.database.Database;
@@ -57,7 +57,7 @@ public class App extends Application {
             @Override
             public void onViewInitFinished(boolean arg0) {
                 //x5內核初始化完成的回调，为true表示x5内核加载成功，否则表示x5内核加载失败，会自动切换到系统内核。
-                LogUtils.e("app", " onViewInitFinished is " + arg0);
+                Log.e("app", " onViewInitFinished is " + arg0);
             }
 
             @Override
@@ -65,7 +65,7 @@ public class App extends Application {
             }
         };
         //x5内核初始化接口
-        QbSdk.initX5Environment(getApplicationContext(), cb);
+        QbSdk.initX5Environment(this, cb);
 
         initCrashHandler();
     }

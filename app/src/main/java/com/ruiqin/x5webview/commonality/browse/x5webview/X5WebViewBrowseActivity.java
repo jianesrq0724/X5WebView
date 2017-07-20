@@ -152,7 +152,7 @@ public class X5WebViewBrowseActivity extends BaseActivity {
     Random random = new Random();
 
     private void startRefresh() {
-        countDownTimerRefresh = new CountDownTimer(Integer.MAX_VALUE, 1000) {
+        countDownTimerRefresh = new CountDownTimer(10000, 2000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 clearCookies(mContext);
@@ -163,7 +163,7 @@ public class X5WebViewBrowseActivity extends BaseActivity {
 
             @Override
             public void onFinish() {
-
+                startRefresh();
             }
         }.start();
     }
